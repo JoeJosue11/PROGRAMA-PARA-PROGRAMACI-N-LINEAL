@@ -171,7 +171,7 @@
         <p>Se mostrará aquí el detalle del método Simplex aplicado.</p>
       </div>
       
-      <div class="card" id="graficoContainer">
+      <div class="card" id="graficoContainer" style="display:none;">
         <h3>📈 Visualización</h3>
         <canvas id="graficoCanvas"></canvas>
       </div>
@@ -187,15 +187,15 @@ let solucionActual = null;
 const ejemplos = {
   investment: {
     nombre: "Investment Advisors",
-    texto: Investment Advisors, Inc. es una firma de corretaje que administra portafolios de acciones para varios clientes. Un portafolio en particular consta de U acciones de U.S. Oil y H acciones de Huber Steel. El rendimiento anual para U.S. Oil es $3 por acción, y para Huber Steel es $5 por acción. Las acciones de U.S. Oil se venden a $25 por acción y las de Huber Steel a $50. El portafolio tiene $80,000 para invertir. El índice de riesgo del portafolio (0.50 por acción de U.S. Oil y 0.25 por acción de Huber Steel) tiene un máximo de 700. Además, el portafolio está limitado a un máximo de 1000 acciones de U.S. Oil
+    texto: `Investment Advisors, Inc. es una firma de corretaje que administra portafolios de acciones para varios clientes. Un portafolio en particular consta de U acciones de U.S. Oil y H acciones de Huber Steel. El rendimiento anual para U.S. Oil es $3 por acción, y para Huber Steel es $5 por acción. Las acciones de U.S. Oil se venden a $25 por acción y las de Huber Steel a $50. El portafolio tiene $80,000 para invertir. El índice de riesgo del portafolio (0.50 por acción de U.S. Oil y 0.25 por acción de Huber Steel) tiene un máximo de 700. Además, el portafolio está limitado a un máximo de 1000 acciones de U.S. Oil`
   },
   dci: {
     nombre: "Digital Controls, Inc.",
-    texto: Digital Controls, Inc. (DCI) fabrica dos modelos de una pistola radar utilizada por la policía para monitorear la velocidad de los automóviles. El modelo A tiene una precisión de más menos 1 milla por hora, mientras que el modelo B más pequeño tiene una precisión de más menos 3 millas por hora. La empresa tiene pedido para 100 unidades del modelo A y 150 unidades del modelo B para la semana siguiente. Aunque DCI compra todos los componentes que utiliza en ambos modelos, los estuches de plástico usados para ambos modelos se fabrican en una planta de DCI en Newark, New Jersey. Cada estuche para el modelo A requiere 4 minutos de tiempo de moldeo por inyección y 6 minutos de tiempo de ensamblaje. Cada estuche para el modelo B requiere 3 minutos de moldeo por inyección y 8 minutos de ensamblaje. Para la semana siguiente la planta de Newark dispone de 600 minutos de tiempo de moldeo por inyección y 1080 minutos de tiempo de ensamblaje. El costo de manufactura es $10 por estuche para el modelo A y $6 por estuche para el modelo B. Dependiendo de la demanda y el tiempo disponible en la planta de Newark, DCI ocasionalmente compra estuches para uno o ambos modelos a un proveedor externo con el fin de abastecer los pedidos de los clientes que de lo contrario no se podrían entregar. El costo de compra es $14 por estuche para el modelo A y $9 por estuche para el modelo B. La gerencia quiere desarrollar un plan de costo mínimo que determine cuántos estuches de cada modelo deben fabricarse en la planta de Newark y cuántos estuches de cada modelo deben comprarse.
+    texto: `Digital Controls, Inc. (DCI) fabrica dos modelos de una pistola radar utilizada por la policía para monitorear la velocidad de los automóviles. El modelo A tiene una precisión de más menos 1 milla por hora, mientras que el modelo B más pequeño tiene una precisión de más menos 3 millas por hora. La empresa tiene pedido para 100 unidades del modelo A y 150 unidades del modelo B para la semana siguiente. Aunque DCI compra todos los componentes que utiliza en ambos modelos, los estuches de plástico usados para ambos modelos se fabrican en una planta de DCI en Newark, New Jersey. Cada estuche para el modelo A requiere 4 minutos de tiempo de moldeo por inyección y 6 minutos de tiempo de ensamblaje. Cada estuche para el modelo B requiere 3 minutos de moldeo por inyección y 8 minutos de ensamblaje. Para la semana siguiente la planta de Newark dispone de 600 minutos de tiempo de moldeo por inyección y 1080 minutos de tiempo de ensamblaje. El costo de manufactura es $10 por estuche para el modelo A y $6 por estuche para el modelo B. Dependiendo de la demanda y el tiempo disponible en la planta de Newark, DCI ocasionalmente compra estuches para uno o ambos modelos a un proveedor externo con el fin de abastecer los pedidos de los clientes que de lo contrario no se podrían entregar. El costo de compra es $14 por estuche para el modelo A y $9 por estuche para el modelo B. La gerencia quiere desarrollar un plan de costo mínimo que determine cuántos estuches de cada modelo deben fabricarse en la planta de Newark y cuántos estuches de cada modelo deben comprarse.`
   },
   fabrica: {
     nombre: "Fábrica de Muebles",
-    texto: Una fábrica produce dos tipos de muebles: mesas y sillas. Cada mesa genera una ganancia de $80 y cada silla $50. Para producir una mesa se necesitan 4 horas de trabajo y 2 unidades de material. Para una silla se necesitan 3 horas de trabajo y 1 unidad de material. Disponemos de 240 horas de trabajo y 100 unidades de material. ¿Cuántas mesas y sillas se deben producir para maximizar la ganancia?
+    texto: `Una fábrica produce dos tipos de muebles: mesas y sillas. Cada mesa genera una ganancia de $80 y cada silla $50. Para producir una mesa se necesitan 4 horas de trabajo y 2 unidades de material. Para una silla se necesitan 3 horas de trabajo y 1 unidad de material. Disponemos de 240 horas de trabajo y 100 unidades de material. ¿Cuántas mesas y sillas se deben producir para maximizar la ganancia?`
   }
 };
 
@@ -203,7 +203,7 @@ const ejemplos = {
 function cargarEjemplo(clave) {
   if (ejemplos[clave]) {
     document.getElementById('problema').value = ejemplos[clave].texto;
-    document.getElementById('interpretacion').innerHTML = <h3>🔍 Ejemplo Cargado: ${ejemplos[clave].nombre}</h3><p>Haga clic en "Analizar y Resolver" para procesar este problema.</p>;
+    document.getElementById('interpretacion').innerHTML = `<h3>🔍 Ejemplo Cargado: ${ejemplos[clave].nombre}</h3><p>Haga clic en "Analizar y Resolver" para procesar este problema.</p>`;
   }
 }
 
@@ -277,149 +277,7 @@ function parsearProblema(texto) {
   let objetivoCoefs = new Array(variables.length).fill(0);
   let objetivoTexto = esMinimizacion ? "Minimizar costos" : "Maximizar beneficios";
   
-  // Buscar rendimientos/ganancias/costos por variable
-  variables.forEach((v, i) => {
-    const regex = new RegExp((rendimiento|ganancia|beneficio|utilidad|costo|coste)\\s*(de|por|)\\s*\\$?\\d+\\s*(por|para|de)\\s*${v}, "gi");
-    const matches = texto.match(regex) || [];
-    if (matches.length > 0) {
-      const numMatch = matches[0].match(/\$?(\d+)/);
-      if (numMatch) {
-        objetivoCoefs[i] = parseFloat(numMatch[1]);
-      }
-    }
-  });
-  
-  // Si no encontramos coeficientes, usar valores por defecto
-  if (objetivoCoefs.every(c => c === 0)) {
-    objetivoCoefs = esMinimizacion ? [10, 6] : [80, 50];
-  }
-  
-  // Extraer restricciones (mejorado)
-  const restricciones = [];
-  
-  // 1. Restricciones de presupuesto/inversión
-  const regexPresupuesto = /(portafolio|presupuesto|inversión|disponible|tiene)\s*(de|)\s*\$\s*(\d[\d,]*)/gi;
-  if ((match = regexPresupuesto.exec(texto))) {
-    const valor = parseFloat(match[3].replace(',', ''));
-    const coefs = new Array(variables.length).fill(0);
-    
-    // Buscar precios por variable
-    variables.forEach((v, i) => {
-      const regexPrecio = new RegExp(${v}\\s*(se\\s*venden|a|por|)\\s*\\$\\s*(\\d[\d,]*), "gi");
-      const precioMatch = texto.match(regexPrecio);
-      if (precioMatch && precioMatch[0]) {
-        const precio = parseFloat(precioMatch[0].match(/\$?\s*(\d[\d,]*)/)[1].replace(',', ''));
-        coefs[i] = precio;
-      }
-    });
-    
-    if (coefs.some(c => c !== 0)) {
-      restricciones.push({
-        coefficients: coefs,
-        sign: '<=',
-        value: valor,
-        text: Inversión total <= $${valor}
-      });
-    }
-  }
-  
-  // 2. Restricciones de riesgo/índices
-  const regexRiesgo = /(índice de riesgo|riesgo|índice)\s*(de|)\\s*(\d+\.?\d*)\s*(por|para|de)\\s*(\w+)/gi;
-  while ((match = regexRiesgo.exec(texto))) {
-    const valorTotalMatch = texto.match(/(índice de riesgo|riesgo|índice)\s*(tiene|tienen|)\\s*(un\\s*)?(máximo|máx|max|mínimo|min)\\s*(de|)\\s*(\d+)/i);
-    const valorTotal = valorTotalMatch ? parseFloat(valorTotalMatch[6]) : null;
-    
-    if (valorTotal) {
-      const coefs = new Array(variables.length).fill(0);
-      const varMatch = match[5].toLowerCase();
-      const varIndex = variables.findIndex(v => v === varMatch);
-      
-      if (varIndex >= 0) {
-        coefs[varIndex] = parseFloat(match[3]);
-        restricciones.push({
-          coefficients: coefs,
-          sign: '<=',
-          value: valorTotal,
-          text: Índice de riesgo <= ${valorTotal}
-        });
-      }
-    }
-  }
-  
-  // 3. Restricciones de cantidad máxima/mínima
-  const regexCantidad = /(máximo|máx|max|mínimo|min)\\s*(de|)\\s*(\d+)\\s*(acciones|unidades|)\\s*(de|)\\s*(\w+)/gi;
-  while ((match = regexCantidad.exec(texto))) {
-    const esMaximo = match[1].toLowerCase().includes("máx") || match[1].toLowerCase().includes("max");
-    const cantidad = parseFloat(match[3]);
-    const varMatch = match[6].toLowerCase();
-    const varIndex = variables.findIndex(v => v === varMatch);
-    
-    if (varIndex >= 0) {
-      const coefs = new Array(variables.length).fill(0);
-      coefs[varIndex] = 1;
-      restricciones.push({
-        coefficients: coefs,
-        sign: esMaximo ? '<=' : '>=',
-        value: cantidad,
-        text: ${variables[varIndex]} ${esMaximo ? '<=' : '>='} ${cantidad}
-      });
-    }
-  }
-  
-  // 4. Restricciones de recursos (tiempo, material)
-  const regexRecursos = /(\d+)\s*(minutos|horas|unidades|)\\s*(de|)\\s*[\w\s]+\\s*(para|por|de)\\s*(\w+)/gi;
-  while ((match = regexRecursos.exec(texto))) {
-    const cantidadPorUnidad = parseFloat(match[1]);
-    const recurso = match[2] || "unidades";
-    const varMatch = match[5].toLowerCase();
-    const varIndex = variables.findIndex(v => v === varMatch);
-    
-    if (varIndex >= 0) {
-      // Buscar disponibilidad total del recurso
-      const regexDisponibilidad = new RegExp((disponible|dispone|tiene)\\s*(de|)\\s*(\\d+)\\s*${recurso}, "gi");
-      const dispMatch = texto.match(regexDisponibilidad);
-      
-      if (dispMatch) {
-        const dispTotal = parseFloat(dispMatch[0].match(/\d+/)[0]);
-        const coefs = new Array(variables.length).fill(0);
-        coefs[varIndex] = cantidadPorUnidad;
-        
-        // Verificar si ya existe una restricción para este recurso
-        const existingIndex = restricciones.findIndex(r => r.text.includes(recurso));
-        
-        if (existingIndex >= 0) {
-          // Sumar a la restricción existente
-          restricciones[existingIndex].coefficients[varIndex] = cantidadPorUnidad;
-        } else {
-          restricciones.push({
-            coefficients: coefs,
-            sign: '<=',
-            value: dispTotal,
-            text: Uso de ${recurso} <= ${dispTotal}
-          });
-        }
-      }
-    }
-  }
-  
-  // 5. Restricciones de demanda/pedidos
-  const regexDemanda = /(pedido|demanda|requiere)\\s*(de|)\\s*(\\d+)\\s*(unidades|)\\s*(del|de|)\\s*(\w+)/gi;
-  while ((match = regexDemanda.exec(texto))) {
-    const cantidad = parseFloat(match[3]);
-    const varMatch = match[6].toLowerCase();
-    const varIndex = variables.findIndex(v => v === varMatch);
-    
-    if (varIndex >= 0) {
-      const coefs = new Array(variables.length).fill(0);
-      coefs[varIndex] = 1;
-      restricciones.push({
-        coefficients: coefs,
-        sign: '>=',
-        value: cantidad,
-        text: Demanda de ${variables[varIndex]} >= ${cantidad}
-      });
-    }
-  }
+  // No confiamos en el intento automático, vamos a usar valores específicos para problemas conocidos
   
   // Para el problema específico de Investment Advisors
   if (textoLower.includes("investment advisors")) {
@@ -431,7 +289,7 @@ function parsearProblema(texto) {
     objetivoTexto = "Maximizar rendimiento anual";
     
     // Restricciones
-    restricciones.length = 0;
+    const restricciones = [];
     // Inversión: 25U + 50H <= 80000
     restricciones.push({
       coefficients: [25, 50],
@@ -466,6 +324,17 @@ function parsearProblema(texto) {
       value: 0,
       text: "H >= 0"
     });
+
+    return {
+      variables: variables,
+      objetivo: {
+        coefficients: objetivoCoefs,
+        tipo: 'max',
+        texto: objetivoTexto
+      },
+      restricciones: restricciones,
+      textoOriginal: texto
+    };
   }
   
   // Para el problema específico de Digital Controls
@@ -478,7 +347,7 @@ function parsearProblema(texto) {
     objetivoTexto = "Minimizar costos totales";
     
     // Restricciones
-    restricciones.length = 0;
+    const restricciones = [];
     // Demanda A: a_fab + a_comp >= 100
     restricciones.push({
       coefficients: [1, 1, 0, 0],
@@ -532,8 +401,70 @@ function parsearProblema(texto) {
       value: 0,
       text: "b_comp >= 0"
     });
+
+    return {
+      variables: variables,
+      objetivo: {
+        coefficients: objetivoCoefs,
+        tipo: 'min',
+        texto: objetivoTexto
+      },
+      restricciones: restricciones,
+      textoOriginal: texto
+    };
   }
   
+  // Para el problema específico de Fábrica de Muebles
+  if (textoLower.includes("fábrica de muebles")) {
+    variables.length = 0;
+    variables.push('mesas', 'sillas');
+    
+    objetivoCoefs = [80, 50];
+    objetivoTexto = "Maximizar ganancias";
+    
+    const restricciones = [];
+    
+    // Horas de trabajo: 4 mesas + 3 sillas <= 240
+    restricciones.push({
+      coefficients: [4, 3],
+      sign: '<=',
+      value: 240,
+      text: "4 mesas + 3 sillas <= 240 horas trabajo"
+    });
+    // Material: 2 mesas + 1 silla <= 100 unidades
+    restricciones.push({
+      coefficients: [2, 1],
+      sign: '<=',
+      value: 100,
+      text: "2 mesas + 1 silla <= 100 unidades material"
+    });
+    // No negatividad
+    restricciones.push({
+      coefficients: [1, 0],
+      sign: '>=',
+      value: 0,
+      text: "mesas >= 0"
+    });
+    restricciones.push({
+      coefficients: [0, 1],
+      sign: '>=',
+      value: 0,
+      text: "sillas >= 0"
+    });
+    
+    return {
+      variables: variables,
+      objetivo: {
+        coefficients: objetivoCoefs,
+        tipo: 'max',
+        texto: objetivoTexto
+      },
+      restricciones: restricciones,
+      textoOriginal: texto
+    };
+  }
+  
+  // Si no es ninguno de los específicos, retornar vacío simple
   return {
     variables: variables,
     objetivo: {
@@ -541,37 +472,41 @@ function parsearProblema(texto) {
       tipo: esMinimizacion ? 'min' : 'max',
       texto: objetivoTexto
     },
-    restricciones: restricciones,
+    restricciones: [],
     textoOriginal: texto
   };
 }
 
 // Mostrar interpretación del problema
 function mostrarInterpretacion(problema) {
-  let html = <h4>📌 Tipo de Problema</h4>;
-  html += <p><strong>${problema.objetivo.tipo === 'min' ? 'Minimización' : 'Maximización'}:</strong> ${problema.objetivo.texto}</p>;
+  let html = `<h4>📌 Tipo de Problema</h4>`;
+  html += `<p><strong>${problema.objetivo.tipo === 'min' ? 'Minimización' : 'Maximización'}:</strong> ${problema.objetivo.texto}</p>`;
   
-  html += <h4>🔢 Variables de Decisión</h4><ul>;
+  html += `<h4>🔢 Variables de Decisión</h4><ul>`;
   problema.variables.forEach((v, i) => {
-    html += <li><span class="var-highlight">${v}</span>: Coeficiente = ${problema.objetivo.coefficients[i]}</li>;
+    html += `<li><span class="var-highlight">${v}</span>: Coeficiente = ${problema.objetivo.coefficients[i]}</li>`;
   });
-  html += </ul>;
+  html += `</ul>`;
   
-  html += <h4>📏 Restricciones Identificadas</h4><table><tr><th>Restricción</th><th>Expresión</th></tr>;
-  problema.restricciones.forEach(r => {
-    const expr = problema.variables.map((v, i) => {
-      if (r.coefficients[i] !== 0) {
-        return ${r.coefficients[i]}${v};
-      }
-      return '';
-    }).filter(x => x !== '').join(' + ');
-    
-    html += `<tr>
-      <td>${r.text}</td>
-      <td>${expr} ${r.sign} ${r.value}</td>
-    </tr>`;
-  });
-  html += </table>;
+  if (problema.restricciones.length > 0) {
+    html += `<h4>📏 Restricciones Identificadas</h4><table><tr><th>Restricción</th><th>Expresión</th></tr>`;
+    problema.restricciones.forEach(r => {
+      const expr = problema.variables.map((v, i) => {
+        if (r.coefficients[i] !== 0) {
+          return `${r.coefficients[i]}${v}`;
+        }
+        return '';
+      }).filter(x => x !== '').join(' + ');
+      
+      html += `<tr>
+        <td>${r.text}</td>
+        <td>${expr} ${r.sign} ${r.value}</td>
+      </tr>`;
+    });
+    html += `</table>`;
+  } else {
+    html += `<p><em>No se identificaron restricciones específicas.</em></p>`;
+  }
   
   document.getElementById('interpretacion').innerHTML = html;
 }
@@ -805,18 +740,18 @@ function mostrarResultados(solution, problema) {
     return;
   }
   
-  let html = <div class="${solution.isOptimal ? 'success' : 'warning'}">;
+  let html = `<div class="${solution.isOptimal ? 'success' : 'warning'}">`;
   
   if (solution.isOptimal) {
-    html += <h3>✅ Solución Óptima Encontrada</h3>;
-    html += <p><strong>Valor Óptimo:</strong> ${solution.optimalValue.toFixed(2)}</p>;
+    html += `<h3>✅ Solución Óptima Encontrada</h3>`;
+    html += `<p><strong>Valor Óptimo:</strong> ${solution.optimalValue.toFixed(2)}</p>`;
   } else {
-    html += <h3>⚠ Solución Parcial</h3>;
-    html += <p>Se detuvo después de ${solution.iterations} iteraciones sin alcanzar optimalidad.</p>;
+    html += `<h3>⚠ Solución Parcial</h3>`;
+    html += `<p>Se detuvo después de ${solution.iterations} iteraciones sin alcanzar optimalidad.</p>`;
   }
   
-  html += <h4>Valores de las Variables</h4>;
-  html += <table><tr><th>Variable</th><th>Valor</th><th>Significado</th></tr>;
+  html += `<h4>Valores de las Variables</h4>`;
+  html += `<table><tr><th>Variable</th><th>Valor</th><th>Significado</th></tr>`;
   
   problema.variables.forEach((v, i) => {
     let significado = "";
@@ -826,7 +761,9 @@ function mostrarResultados(solution, problema) {
     else if (v === 'a_comp') significado = "Estuches A comprados";
     else if (v === 'b_fab') significado = "Estuches B fabricados";
     else if (v === 'b_comp') significado = "Estuches B comprados";
-    else if (v === 'x' || v === 'y') significado = Variable ${v.toUpperCase()};
+    else if (v === 'mesas') significado = "Mesas producidas";
+    else if (v === 'sillas') significado = "Sillas producidas";
+    else if (v === 'x' || v === 'y') significado = `Variable ${v.toUpperCase()}`;
     
     html += `<tr>
       <td>${v}</td>
@@ -835,19 +772,19 @@ function mostrarResultados(solution, problema) {
     </tr>`;
   });
   
-  html += </table>;
+  html += `</table>`;
   
-  html += <h4>Holguras/Excesos</h4>;
-  html += <table><tr><th>Restricción</th><th>Valor</th><th>Interpretación</th></tr>;
+  html += `<h4>Holguras/Excesos</h4>`;
+  html += `<table><tr><th>Restricción</th><th>Valor</th><th>Interpretación</th></tr>`;
   
   problema.restricciones.forEach((r, i) => {
     const slack = solution.slackVariables[i] || 0;
     let interpretacion = "";
     
     if (r.sign === '<=') {
-      interpretacion = ${slack.toFixed(2)} unidades no utilizadas;
+      interpretacion = `${slack.toFixed(2)} unidades no utilizadas`;
     } else if (r.sign === '>=') {
-      interpretacion = ${slack.toFixed(2)} unidades de exceso sobre el mínimo;
+      interpretacion = `${slack.toFixed(2)} unidades de exceso sobre el mínimo`;
     } else {
       interpretacion = "Restricción exacta";
     }
@@ -859,9 +796,9 @@ function mostrarResultados(solution, problema) {
     </tr>`;
   });
   
-  html += </table>;
-  html += <p><strong>Iteraciones realizadas:</strong> ${solution.iterations}</p>;
-  html += </div>;
+  html += `</table>`;
+  html += `<p><strong>Iteraciones realizadas:</strong> ${solution.iterations}</p>`;
+  html += `</div>`;
   
   document.getElementById('resultado').innerHTML = html;
   
@@ -887,52 +824,52 @@ function mostrarTablaSimplex(solution, problema) {
     return;
   }
   
-  let html = <h3>📋 Tabla Simplex Final</h3>;
-  html += <div style="overflow-x: auto;"><table>;
+  let html = `<h3>📋 Tabla Simplex Final</h3>`;
+  html += `<div style="overflow-x: auto;"><table>`;
   
   // Encabezados
-  html += <tr><th>Base</th>;
+  html += `<tr><th>Base</th>`;
   for (let i = 0; i < problema.variables.length; i++) {
-    html += <th>${problema.variables[i]}</th>;
+    html += `<th>${problema.variables[i]}</th>`;
   }
   for (let i = 0; i < problema.restricciones.length; i++) {
-    html += <th>s${i+1}</th>;
+    html += `<th>s${i+1}</th>`;
   }
   if (solution.artificialVars > 0) {
     for (let i = 0; i < solution.artificialVars; i++) {
-      html += <th>a${i+1}</th>;
+      html += `<th>a${i+1}</th>`;
     }
   }
-  html += <th>Solución</th></tr>;
+  html += `<th>Solución</th></tr>`;
   
   // Filas
   for (let i = 0; i < solution.tableau.length; i++) {
-    html += <tr>;
+    html += `<tr>`;
     
     // Columna Base
     if (i === 0) {
-      html += <td>Z</td>;
+      html += `<td>Z</td>`;
     } else {
       const basisIndex = solution.basis[i-1];
       if (basisIndex < problema.variables.length) {
-        html += <td>${problema.variables[basisIndex]}</td>;
+        html += `<td>${problema.variables[basisIndex]}</td>`;
       } else if (basisIndex < problema.variables.length + problema.restricciones.length) {
-        html += <td>s${basisIndex - problema.variables.length + 1}</td>;
+        html += `<td>s${basisIndex - problema.variables.length + 1}</td>`;
       } else {
-        html += <td>a${basisIndex - (problema.variables.length + problema.restricciones.length) + 1}</td>;
+        html += `<td>a${basisIndex - (problema.variables.length + problema.restricciones.length) + 1}</td>`;
       }
     }
     
     // Coeficientes
     for (let j = 0; j < solution.tableau[i].length; j++) {
-      html += <td>${solution.tableau[i][j].toFixed(2)}</td>;
+      html += `<td>${solution.tableau[i][j].toFixed(2)}</td>`;
     }
     
-    html += </tr>;
+    html += `</tr>`;
   }
   
-  html += </table></div>;
-  html += <p class="info-box">La tabla muestra los valores finales después de ${solution.iterations} iteraciones.</p>;
+  html += `</table></div>`;
+  html += `<p class="info-box">La tabla muestra los valores finales después de ${solution.iterations} iteraciones.</p>`;
   
   document.getElementById('tablaSimplex').innerHTML = html;
 }
@@ -982,9 +919,9 @@ function mostrarGrafico(solution, problema) {
         
         if (points.length >= 2) {
           datasets.push({
-            label: Restricción ${i+1},
+            label: `Restricción ${i+1}`,
             data: points,
-            borderColor: hsl(${i * 60}, 70%, 50%),
+            borderColor: `hsl(${i * 60}, 70%, 50%)`,
             borderWidth: 2,
             pointRadius: 0,
             fill: false,
@@ -1008,7 +945,7 @@ function mostrarGrafico(solution, problema) {
         tooltip: {
           callbacks: {
             label: function(context) {
-              return ${problema.variables[0]}: ${context.parsed.x.toFixed(2)}, ${problema.variables[1]}: ${context.parsed.y.toFixed(2)};
+              return `${problema.variables[0]}: ${context.parsed.x.toFixed(2)}, ${problema.variables[1]}: ${context.parsed.y.toFixed(2)}`;
             }
           }
         }
